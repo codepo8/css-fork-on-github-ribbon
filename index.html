@@ -50,6 +50,64 @@
   }
   a {color: #060;}
  </style>
+
+  <style type="text/css-template" id="ribbon-tpl">
+#forkongithub a {
+  background: __bg__;
+  color: __colour__;
+  text-decoration: none;
+  font-family: arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 40px;
+  font-size: 1rem;
+  line-height: 2rem;
+  position: relative;
+  transition: 0.5s;
+}
+
+#forkongithub a:hover {
+  background: __hoverbackground__;
+  color: __hovercolour__;
+}
+
+#forkongithub a::before,
+#forkongithub a::after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 1px;
+  background: __linescolour__;
+}
+
+#forkongithub a::after {
+  bottom: 1px;
+  top: auto;
+}
+
+@media screen and (min-width: __breakpoint__) {
+  #forkongithub {
+    position: absolute;
+    display: block;
+    top: 0;
+    __position__: 0;
+    width: 200px;
+    overflow: hidden;
+    height: 200px;
+  }
+  #forkongithub a {
+    width: 200px;
+    position: absolute;
+    top: 60px;
+    __rotation__;
+    box-shadow: __shadowdef__;
+  }
+}
+
+ </style>
   </head>
 <body>
   <span id="forkongithub">
@@ -98,24 +156,26 @@ var background = document.querySelector('#ribboncolour'),
     linescolour = document.querySelector('#linescolour'),
     shadowdef = document.querySelector('#shadowdef'),
     breakpoint = document.querySelector('#responsivebreakpoint'),
-        ribbon = document.querySelector('#ribbon');
-
-var styles = '#forkongithub a {background:{{bg}};color:{{colour}};text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:{{hoverbackground}};color:{{hovercolour}};}#forkongithub a::before,#forkongithub a::after {content:\'\';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:{{linescolour}};}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width: {{breakpoint}}){#forkongithub{position:absolute;display:block;top:0;{{position}}:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;{{rotation}};box-shadow:{{shadowdef}};}}';
+        ribbon = document.querySelector('#ribbon'),
+        styles = document.querySelector('#ribbon-tpl').innerHTML
+            .replace(/: +/g, ':')
+            .replace(/\s*\{/g, '{')
+            .replace(/\n\s*/g, '');
 
 document.querySelector('form').addEventListener('change', function(ev) {
-  s = styles.replace(/{{bg}}/g, background.value);
-  s = s.replace(/{{colour}}/g, colour.value);
-  s = s.replace(/{{hovercolour}}/g, hovercolour.value);
-  s = s.replace(/{{linescolour}}/g, linescolour.value);
-  s = s.replace(/{{hoverbackground}}/g, hoverbackground.value);
-  s = s.replace(/{{shadowdef}}/g, shadowdef.value);
-  s = s.replace(/{{breakpoint}}/g, breakpoint.value);
+  s = styles.replace(/__bg__/g, background.value);
+  s = s.replace(/__colour__/g, colour.value);
+  s = s.replace(/__hovercolour__/g, hovercolour.value);
+  s = s.replace(/__linescolour__/g, linescolour.value);
+  s = s.replace(/__hoverbackground__/g, hoverbackground.value);
+  s = s.replace(/__shadowdef__/g, shadowdef.value);
+  s = s.replace(/__breakpoint__/g, breakpoint.value);
   if (document.forms[0].elements.position[0].checked) {
-    s = s.replace(/{{position}}/, 'right');
-    s = s.replace(/{{rotation}}/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg)');
+    s = s.replace(/__position__/, 'right');
+    s = s.replace(/__rotation__/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg)');
   } else {
-    s = s.replace(/{{position}}/, 'left');
-    s = s.replace(/{{rotation}}/, 'left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg)');
+    s = s.replace(/__position__/, 'left');
+    s = s.replace(/__rotation__/, 'left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg)');
   }
   code.value = '<style type="text/css">' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on Github</a></span>';
   ribbon.innerHTML = s;

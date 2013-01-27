@@ -1,0 +1,129 @@
+CTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>An imageless and responsive "Fork me on Github" ribbon</title>
+  <style id="ribbon">
+#forkongithub a {background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after {content:'';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width:750px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
+ </style>
+ <style>
+    body, html {
+      height: 100%;
+      font-family: "open sans", Arial, Helvetica, sans-serif;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    label,.label {width: 200px; float: left; font-weight: bold;}
+    label.inline {
+      width: auto; 
+      float: none;
+      padding-right: 2em;
+    }
+    label.secondary {
+      padding-left: 21px;
+      width: 179px;
+    }
+    form div {
+      clear: both;
+      padding-bottom: 5px;
+    }
+    input[type=text] { width: 400px; }
+    textarea {width: 400px; height: 200px;}
+    #container {
+      width: 650px;
+      margin: 10px auto;
+    }
+    @media screen and (min-width:800px){
+    #forkongithub {
+      position: fixed;
+    }
+  }
+  footer {
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 3rem 0;
+    border-top: 1px solid #000;
+  }
+  a {color: #060;}
+ </style>
+  </head>
+<body>
+  <span id="forkongithub">
+    <a href="#">Fork me on Github</a>
+  </span>
+
+  <div id="container">
+  <h1>An imageless and responsive "Fork me on Github" ribbon</h1>
+  <p>The "Fork me on Github" <a href="https://github.com/blog/273-github-ribbons">ribbons supplied by GitHub</a> are cute but they have a few issues: they mean having to load an extra image and they overlap the content of the page on smaller screens.</p>
+  <p>Instead of using an image it is totally fine to use CSS for the same purpose. This is an example of a imageless ribbon that falls back to an inline link when there is not enough space. If you see this on a screen less than 800 pixels there should be a link above, if you have a wider screen the ribbon should be up in the corner.</p>
+  <h2>Customise your ribbon</h2>
+  <form action="#">
+  <p>Simply change the settings in the following form to your needs. Going to the next field applies the changes which you can see live here. When you are happy with your choices simply copy and paste the code.</p>
+    <div><label for="url">GitHub URL: </label>
+        <input type="text" id="url" value="https://github.com/codepo8/css-fork-on-github-ribbon"></div>
+    <div><label for="ribboncolour">Ribbon Colour: </label>
+        <input type="text" id="ribboncolour" value="#000"></div>
+    <div><label for="ribbonhovercolour">Ribbon Hover Colour:</label>
+        <input type="text" id="ribbonhovercolour" value="#060"></div>
+    <div><label for="textcolour">Text Colour: </label>
+        <input type="text" id="textcolour" value="#fff"></div>
+    <div><label for="texthovercolour">Text Hover Colour:</label>
+        <input type="text" id="texthovercolour" value="#fff"></div>
+    <div><label for="linescolour">Lines Colour:</label>
+        <input type="text" id="linescolour" value="#fff"></div>
+    <div><label for="shadowdef">Shadow settings:</label>
+    <input type="text" id="shadowdef" value="4px 4px 10px rgba(0,0,0,0.8)"></div>
+    <div><label for="responsivebreakpoint">Responsive Breakpoint:</label>
+        <input type="text" id="responsivebreakpoint" value="800px"></div>
+    <div><span class="label">Position: </span><label class="inline"><input type="radio" name="position" value="right">right</label><label class="inline"><input type="radio" name="position" value="left">left</label></div>    
+    <div><label for="code">Code:</label><textarea id="code"></textarea></div>
+</div>
+
+
+  </form>
+  </div>
+  <footer><p>Written by <a href="http://christianheilmann.com">Chris Heilmann</a> - <a href="http://twitter.com/codepo8">@codepo8</a></p></footer>
+
+<script>
+var background = document.querySelector('#ribboncolour'),
+    colour = document.querySelector('#textcolour'),
+    url = document.querySelector('#url'),
+    hovercolour = document.querySelector('#texthovercolour'),
+    hoverbackground = document.querySelector('#ribbonhovercolour'),
+    code = document.querySelector('#code'),
+    linescolour = document.querySelector('#linescolour'),
+    shadowdef = document.querySelector('#shadowdef'),
+    breakpoint = document.querySelector('#responsivebreakpoint'),
+        ribbon = document.querySelector('#ribbon');
+
+var styles = '#forkongithub a {background:{{bg}};color:{{colour}};text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:{{hoverbackground}};color:{{hovercolour}};}#forkongithub a::before,#forkongithub a::after {content:\'\';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:{{linescolour}};}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width: {{breakpoint}}){#forkongithub{position:absolute;display:block;top:0;{{position}}:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;{{rotation}};box-shadow:{{shadowdef}};}}';
+
+document.querySelector('form').addEventListener('change', function(ev) {
+  s = styles.replace(/{{bg}}/g, background.value);
+  s = s.replace(/{{colour}}/g, colour.value);
+  s = s.replace(/{{hovercolour}}/g, hovercolour.value);
+  s = s.replace(/{{linescolour}}/g, linescolour.value);
+  s = s.replace(/{{hoverbackground}}/g, hoverbackground.value);
+  s = s.replace(/{{shadowdef}}/g, shadowdef.value);
+  s = s.replace(/{{breakpoint}}/g, breakpoint.value);
+  if (document.forms[0].elements.position[0].checked) {
+    s = s.replace(/{{position}}/, 'right');
+    s = s.replace(/{{rotation}}/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg)');
+  } else {
+    s = s.replace(/{{position}}/, 'left');
+    s = s.replace(/{{rotation}}/, 'left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg)');
+  }
+  code.value = '<style type="text/css">' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on Github</a></span>';
+  ribbon.innerHTML = s;
+}, false);
+
+</script>
+
+</body>
+</html>
+
+

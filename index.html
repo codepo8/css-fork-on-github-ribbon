@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
-  <title>An imageless and responsive "Fork me on Github" ribbon</title>
+  <title>An imageless and responsive "Fork me on GitHub" ribbon</title>
   <style id="ribbon">
 #forkongithub a {background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after {content:'';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width:750px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
  </style>
@@ -53,11 +53,11 @@
   </head>
 <body>
   <span id="forkongithub">
-    <a href="#">Fork me on Github</a>
+    <a href="#">Fork me on GitHub</a>
   </span>
 
   <div id="container">
-  <h1>An imageless and responsive "Fork me on Github" ribbon</h1>
+  <h1>An imageless and responsive "Fork me on GitHub" ribbon</h1>
   <p>The "Fork me on Github" <a href="https://github.com/blog/273-github-ribbons">ribbons supplied by GitHub</a> are cute but they have a few issues: they mean having to load an extra image and they overlap the content of the page on smaller screens.</p>
   <p>Instead of using an image it is totally fine to use CSS for the same purpose. This is an example of a imageless ribbon that falls back to an inline link when there is not enough space. If you see this on a screen less than 800 pixels there should be a link above, if you have a wider screen the ribbon should be up in the corner.</p>
   <h2>Customise your ribbon</h2>

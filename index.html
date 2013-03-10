@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>An imageless and responsive "Fork me on GitHub" ribbon</title>
-  <style id="ribbon">
+  <style type="text/css" id="ribbon">
 #forkongithub a {background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after {content:'';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width:750px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
  </style>
  <style>
@@ -177,7 +177,7 @@ document.querySelector('form').addEventListener('change', function(ev) {
     s = s.replace(/__position__/, 'left');
     s = s.replace(/__rotation__/, 'left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg)');
   }
-  code.value = '<style>' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on GitHub</a></span>';
+  code.value = '<style type="text/css">' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on GitHub</a></span>';
   ribbon.innerHTML = s;
 }, false);
 

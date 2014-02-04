@@ -8,7 +8,9 @@
   </style>
   <style>
     body {
+      width: 650px;
       font-family: "open sans", Arial, Helvetica, sans-serif;
+      margin: 10px auto;
     }
     a {
       color: #060;
@@ -18,10 +20,6 @@
     }
     h2 {
       font-size: 1.2rem;
-    }
-    #container {
-      width: 650px;
-      margin: 10px auto;
     }
     label,
     .field {
@@ -109,48 +107,46 @@
   <span id="forkongithub">
     <a href="#">Fork me on GitHub</a>
   </span>
-  <div id="container">
-    <h1>An imageless and responsive "Fork me on GitHub" ribbon</h1>
-    <p>The "Fork me on GitHub" <a href="https://github.com/blog/273-github-ribbons">ribbons supplied by GitHub</a> are cute but they have a few issues: they mean having to load an extra image and they overlap the content of the page on smaller screens.</p>
-    <p>Instead of using an image it is totally fine to use CSS for the same purpose. This is an example of a imageless ribbon that falls back to an inline link when there is not enough space. If you see this on a screen less than 800 pixels there should be a link above, if you have a wider screen the ribbon should be up in the corner.</p>
-    <h2>Customise your ribbon</h2>
-    <form action="#">
-      <p>Simply change the settings in the following form to your needs. Going to the next field applies the changes which you can see live here. When you are happy with your choices simply copy and paste the code.</p>
-      <label>GitHub URL:
-        <input type="text" id="url" value="https://github.com/codepo8/css-fork-on-github-ribbon">
-      </label>
-      <label>Ribbon Colour:
-        <input type="text" id="ribboncolour" value="#000">
-      </label>
-      <label>Ribbon Hover Colour:
-        <input type="text" id="ribbonhovercolour" value="#060">
-      </label>
-      <label>Text Colour:
-        <input type="text" id="textcolour" value="#fff">
-      </label>
-      <label>Text Hover Colour:
-        <input type="text" id="texthovercolour" value="#fff">
-      </label>
-      <label>Lines Colour:
-        <input type="text" id="linescolour" value="#fff">
-      </label>
-      <label>Shadow:
-        <input type="text" id="shadowdef" value="4px 4px 10px rgba(0,0,0,0.8)">
-      </label>
-      <label>Responsive Breakpoint:
-        <input type="text" id="responsivebreakpoint" value="800px">
-      </label>
-      <div class="field">Position:
-        <div class="group">
-          <label><input type="radio" name="position" value="left">left</label>
-          <label><input type="radio" name="position" value="right">right</label>
-        </div>
+  <h1>An imageless and responsive "Fork me on GitHub" ribbon</h1>
+  <p>The "Fork me on GitHub" <a href="https://github.com/blog/273-github-ribbons">ribbons supplied by GitHub</a> are cute but they have a few issues: they mean having to load an extra image and they overlap the content of the page on smaller screens.</p>
+  <p>Instead of using an image it is totally fine to use CSS for the same purpose. This is an example of a imageless ribbon that falls back to an inline link when there is not enough space. If you see this on a screen less than 800 pixels there should be a link above, if you have a wider screen the ribbon should be up in the corner.</p>
+  <h2>Customise your ribbon</h2>
+  <form action="#">
+    <p>Simply change the settings in the following form to your needs. Going to the next field applies the changes which you can see live here. When you are happy with your choices simply copy and paste the code.</p>
+    <label>GitHub URL:
+      <input type="text" id="url" value="https://github.com/codepo8/css-fork-on-github-ribbon">
+    </label>
+    <label>Ribbon Colour:
+      <input type="text" id="ribboncolour" value="#000">
+    </label>
+    <label>Ribbon Hover Colour:
+      <input type="text" id="ribbonhovercolour" value="#060">
+    </label>
+    <label>Text Colour:
+      <input type="text" id="textcolour" value="#fff">
+    </label>
+    <label>Text Hover Colour:
+      <input type="text" id="texthovercolour" value="#fff">
+    </label>
+    <label>Lines Colour:
+      <input type="text" id="linescolour" value="#fff">
+    </label>
+    <label>Shadow:
+      <input type="text" id="shadowdef" value="4px 4px 10px rgba(0,0,0,0.8)">
+    </label>
+    <label>Responsive Breakpoint:
+      <input type="text" id="responsivebreakpoint" value="800px">
+    </label>
+    <div class="field">Position:
+      <div class="group">
+        <label><input type="radio" name="position" value="left">left</label>
+        <label><input type="radio" name="position" value="right">right</label>
       </div>
-      <label>Code:
-        <textarea id="code"></textarea>
-      </label>
-    </form>
-  </div>
+    </div>
+    <label>Code:
+      <textarea id="code"></textarea>
+    </label>
+  </form>
   <div style="clear: both"></div>
   <footer>
     <p>Written by <a href="http://christianheilmann.com">Chris Heilmann</a> - <a href="http://twitter.com/codepo8">@codepo8</a></p>

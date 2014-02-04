@@ -23,26 +23,26 @@
       width: 650px;
       margin: 10px auto;
     }
-    label, .label {
-      width: 200px;
+    label,
+    .field {
       font-weight: bold;
-      float: left;
+      margin-bottom: 12px;
+      display: block;
+      position: relative;
     }
-    label.inline {
-      width: auto;
-      float: none;
-      padding-right: 2em;
+    .group > label {
+      display: inline-block;
+      margin-right: 20px;
     }
-    form div {
-      clear: both;
-      padding-bottom: 5px;
-    }
-    input[type=text] {
-      width: 400px;
-    }
+    input[type=text],
+    .group,
     textarea {
       width: 400px;
+      float: right;
+    }
+    textarea {
       height: 200px;
+      resize: vertical;
     }
     footer {
       font-size: 0.8rem;
@@ -116,26 +116,42 @@
     <h2>Customise your ribbon</h2>
     <form action="#">
       <p>Simply change the settings in the following form to your needs. Going to the next field applies the changes which you can see live here. When you are happy with your choices simply copy and paste the code.</p>
-      <div><label for="url">GitHub URL:</label>
-          <input type="text" id="url" value="https://github.com/codepo8/css-fork-on-github-ribbon"></div>
-      <div><label for="ribboncolour">Ribbon Colour: </label>
-          <input type="text" id="ribboncolour" value="#000"></div>
-      <div><label for="ribbonhovercolour">Ribbon Hover Colour:</label>
-          <input type="text" id="ribbonhovercolour" value="#060"></div>
-      <div><label for="textcolour">Text Colour: </label>
-          <input type="text" id="textcolour" value="#fff"></div>
-      <div><label for="texthovercolour">Text Hover Colour:</label>
-          <input type="text" id="texthovercolour" value="#fff"></div>
-      <div><label for="linescolour">Lines Colour:</label>
-          <input type="text" id="linescolour" value="#fff"></div>
-      <div><label for="shadowdef">Shadow:</label>
-          <input type="text" id="shadowdef" value="4px 4px 10px rgba(0,0,0,0.8)"></div>
-      <div><label for="responsivebreakpoint">Responsive Breakpoint:</label>
-          <input type="text" id="responsivebreakpoint" value="800px"></div>
-      <div><span class="label">Position: </span><label class="inline"><input type="radio" name="position" value="right">right</label><label class="inline"><input type="radio" name="position" value="left">left</label></div>
-      <div><label for="code">Code:</label><textarea id="code"></textarea></div>
+      <label>GitHub URL:
+        <input type="text" id="url" value="https://github.com/codepo8/css-fork-on-github-ribbon">
+      </label>
+      <label>Ribbon Colour:
+        <input type="text" id="ribboncolour" value="#000">
+      </label>
+      <label>Ribbon Hover Colour:
+        <input type="text" id="ribbonhovercolour" value="#060">
+      </label>
+      <label>Text Colour:
+        <input type="text" id="textcolour" value="#fff">
+      </label>
+      <label>Text Hover Colour:
+        <input type="text" id="texthovercolour" value="#fff">
+      </label>
+      <label>Lines Colour:
+        <input type="text" id="linescolour" value="#fff">
+      </label>
+      <label>Shadow:
+        <input type="text" id="shadowdef" value="4px 4px 10px rgba(0,0,0,0.8)">
+      </label>
+      <label>Responsive Breakpoint:
+        <input type="text" id="responsivebreakpoint" value="800px">
+      </label>
+      <div class="field">Position:
+        <div class="group">
+          <label><input type="radio" name="position" value="left">left</label>
+          <label><input type="radio" name="position" value="right">right</label>
+        </div>
+      </div>
+      <label>Code:
+        <textarea id="code"></textarea>
+      </label>
     </form>
   </div>
+  <div style="clear: both"></div>
   <footer>
     <p>Written by <a href="http://christianheilmann.com">Chris Heilmann</a> - <a href="http://twitter.com/codepo8">@codepo8</a></p>
   </footer>
@@ -155,7 +171,7 @@
                 .replace(/\s*\{/g, '{')
                 .replace(/\n\s*/g, '');
 
-    document.querySelector('form').addEventListener('change', function(ev) {
+    document.querySelector('form').addEventListener('change', function() {
       s = styles.replace(/__bg__/g, background.value);
       s = s.replace(/__colour__/g, colour.value);
       s = s.replace(/__hovercolour__/g, hovercolour.value);
@@ -164,11 +180,11 @@
       s = s.replace(/__shadowdef__/g, shadowdef.value);
       s = s.replace(/__breakpoint__/g, breakpoint.value);
       if (document.forms[0].elements.position[0].checked) {
-        s = s.replace(/__position__/, 'right');
-        s = s.replace(/__rotation__/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg)');
-      } else {
         s = s.replace(/__position__/, 'left');
         s = s.replace(/__rotation__/, 'left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg)');
+      } else {
+        s = s.replace(/__position__/, 'right');
+        s = s.replace(/__rotation__/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg)');
       }
       code.value = '<style type="text/css">' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on GitHub</a></span>';
       ribbon.innerHTML = s;

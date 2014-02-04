@@ -191,7 +191,7 @@
         s = s.replace(/__alignment__/, 'right');
         s = s.replace(/__rotation__/, 'right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg)');
       }
-      code.value = '<style type="text/css">' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on GitHub</a></span>';
+      code.value = '<style>' + s + '</style><span id="forkongithub"><a href="' + url.value + '">Fork me on GitHub</a></span>';
       ribbon.innerHTML = s;
     }, false);
   </script>

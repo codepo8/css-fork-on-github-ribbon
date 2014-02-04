@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>An imageless and responsive "Fork me on GitHub" ribbon</title>
-  <style type="text/css" id="ribbon">
-    #forkongithub a {background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after {content:'';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width:750px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
+  <style id="ribbon">
+    #forkongithub a {background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover {background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after {content:'';width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after {bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a {width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
   </style>
   <style>
-    body, html {
-      height: 100%;
+    body {
       font-family: "open sans", Arial, Helvetica, sans-serif;
     }
     a {
@@ -20,6 +19,10 @@
     h2 {
       font-size: 1.2rem;
     }
+    #container {
+      width: 650px;
+      margin: 10px auto;
+    }
     label, .label {
       width: 200px;
       font-weight: bold;
@@ -29,10 +32,6 @@
       width: auto;
       float: none;
       padding-right: 2em;
-    }
-    label.secondary {
-      padding-left: 21px;
-      width: 179px;
     }
     form div {
       clear: both;
@@ -45,19 +44,11 @@
       width: 400px;
       height: 200px;
     }
-    #container {
-      width: 650px;
-      margin: 10px auto;
-    }
-    @media screen and (min-width: 800px) {
-      #forkongithub {
-        position: fixed;
-      }
-    }
     footer {
       font-size: 0.8rem;
       text-align: center;
-      margin: 3rem 0;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
       border-top: 1px solid #000;
     }
   </style>

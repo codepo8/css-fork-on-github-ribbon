@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>An imageless and responsive "Fork me on GitHub" ribbon</title>
+  <title>Pure CSS responsive "Fork me on GitHub" ribbon</title>
   <style id="ribbon">
-    #forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:fixed;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
+    #forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:fixed;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}
   </style>
   <style>
+    html {
+      background-color: #323232;
+    }
     body {
       width: 650px;
+      background-color: #a2a1a5;
       font-family: "open sans", Arial, Helvetica, sans-serif;
+      box-shadow: 3px 4px 16px rgba(0, 0, 0, 0.8);
+      padding: 14px;
       margin: 10px auto;
     }
     a {
-      color: #060;
+      color: #001ebd;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #a50000;
+      text-decoration: underline;
     }
     h1 {
       font-size: 1.5rem;
@@ -30,13 +42,18 @@
     }
     .group > label {
       display: inline-block;
-      margin-right: 20px;
+      margin-right: 5px;
     }
     input[type=text],
     .group,
     textarea {
       width: 400px;
       float: right;
+    }
+    input,
+    textarea {
+      background-color: #ebe9e9;
+      border: 1px #666 solid;
     }
     textarea {
       height: 200px;
@@ -46,8 +63,11 @@
       font-size: 0.8rem;
       text-align: center;
       margin-top: 3rem;
-      margin-bottom: 1rem;
+      padding-top: 1em;
       border-top: 1px solid #000;
+    }
+    footer p {
+      margin: 2px auto;
     }
   </style>
   <style type="text/css-template" id="ribbon-tpl">
@@ -108,7 +128,7 @@
   <span id="forkongithub">
     <a href="#">Fork me on GitHub</a>
   </span>
-  <h1>An imageless and responsive "Fork me on GitHub" ribbon</h1>
+  <h1>Pure CSS responsive "Fork me on GitHub" ribbon</h1>
   <p>The "Fork me on GitHub" <a href="https://github.com/blog/273-github-ribbons">ribbons supplied by GitHub</a> are cute but they have a few issues: they mean having to load an extra image and they overlap the content of the page on smaller screens.</p>
   <p>Instead of using an image it is totally fine to use CSS for the same purpose. This is an example of a imageless ribbon that falls back to an inline link when there is not enough space. If you see this on a screen less than 800 pixels there should be a link above, if you have a wider screen the ribbon should be up in the corner.</p>
   <h2>Customise your ribbon</h2>
@@ -121,7 +141,7 @@
       <input type="text" id="ribboncolour" value="#000">
     </label>
     <label>Ribbon Hover Colour:
-      <input type="text" id="ribbonhovercolour" value="#060">
+      <input type="text" id="ribbonhovercolour" value="#c11">
     </label>
     <label>Text Colour:
       <input type="text" id="textcolour" value="#fff">
@@ -157,6 +177,7 @@
   <div style="clear: both"></div>
   <footer>
     <p>Written by <a href="http://christianheilmann.com">Chris Heilmann</a> - <a href="http://twitter.com/codepo8">@codepo8</a></p>
+    <p>Styled by <a href="http://twitter.com/tknomad">Ildar Sagdejev</a></p>
   </footer>
   <script>
     var form = document.forms[0],

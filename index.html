@@ -180,22 +180,22 @@
     <p>Styled by <a href="http://twitter.com/tknomad">Ildar Sagdejev</a></p>
   </footer>
   <script>
-    var form = document.forms[0],
-        background = document.querySelector('#ribboncolour'),
-        colour = document.querySelector('#textcolour'),
-        url = document.querySelector('#url'),
-        hovercolour = document.querySelector('#texthovercolour'),
-        hoverbackground = document.querySelector('#ribbonhovercolour'),
-        code = document.querySelector('#code'),
-        linescolour = document.querySelector('#linescolour'),
-        shadowdef = document.querySelector('#shadowdef'),
-        breakpoint = document.querySelector('#responsivebreakpoint'),
-            ribbon = document.querySelector('#ribbon'),
-            styles = document.querySelector('#ribbon-tpl').innerHTML
-                .replace(/: +/g, ':')
-                .replace(/, +/g, ',')
-                .replace(/\s*\{/g, '{')
-                .replace(/\n\s*/g, '');
+    var         form = document.forms[0],
+          background = document.querySelector('#ribboncolour'),
+              colour = document.querySelector('#textcolour'),
+                 url = document.querySelector('#url'),
+         hovercolour = document.querySelector('#texthovercolour'),
+     hoverbackground = document.querySelector('#ribbonhovercolour'),
+                code = document.querySelector('#code'),
+         linescolour = document.querySelector('#linescolour'),
+           shadowdef = document.querySelector('#shadowdef'),
+          breakpoint = document.querySelector('#responsivebreakpoint'),
+              ribbon = document.querySelector('#ribbon'),
+              styles = document.querySelector('#ribbon-tpl').innerHTML
+                        .replace(/: +/g, ':')
+                        .replace(/, +/g, ',')
+                        .replace(/\s*\{/g, '{')
+                        .replace(/\n\s*/g, '');
 
     form.addEventListener('change', function() {
       s = styles.replace(/__bg__/g, background.value);
